@@ -1,0 +1,18 @@
+{
+  "name": "rad_midiswaps",
+  "version": "1.0.0",
+  "description": "Identifies and brings notice to radical midiswaps.",
+  "main": "rad-midiswaps.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rad",
+    "midiswaps"
+  ],
+  "author": "Noah",
+  "license": "ISC",
+  "dependencies": {
+    "twit": "^2.2.5"
+  }
+}
