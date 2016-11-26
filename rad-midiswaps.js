@@ -35,9 +35,13 @@ function postTweet(tweet) {
 
   }
 
-  var replyText = replyDad + '@' + name + ' ' + generatedText;
+  if (name == 'Epic_Mashups'){
+
+    var replyText = replyDad + '@' + name + ' ' + generatedText;
   
-  T.post('statuses/update', { status: replyText, in_reply_to_status_id: id}, tweeted);
+    T.post('statuses/update', { status: replyText, in_reply_to_status_id: id}, tweeted);
+
+  }
 
   function tweeted(err, reply) {
     if (err) {
