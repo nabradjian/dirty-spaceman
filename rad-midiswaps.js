@@ -8,32 +8,42 @@ var T = new Twit({
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 });
 
-var stream = T.stream('statuses/filter', { follow: 'Epic_Mashups' });
+var stream = T.stream('statuses/filter', { follow: '1862449172' });
 
 stream.on('tweet', postTweet);
 
 function postTweet(tweet) {
 
-    var reply_to = tweet.in_reply_to_screen_name;
+  var reply_to = tweet.in_reply_to_screen_name;
 
-    var name = tweet.user.screen_name;
+  var name = tweet.user.screen_name;
 
-    var id = tweet.id_str;
+  var id = tweet.id_str;
 
-  if (reply_to === 'TTGrandDad') {
+  var generatedText = generateReply();
 
-    var generatedText = generateReply();
+  var replyDad;
 
-    var replyText = '@' + reply_to + ' ' + '@' + name + ' ' + generatedText;
+  if (reply_to) {
 
-    T.post('statuses/update', { status: replyText, in_reply_to_status_id: id}, tweeted);
+    replyDad = '@' + reply_to + ' ';
 
-    function tweeted(err, reply) {
-      if (err) {
-        console.log(err.message);
-      } else {
+  }
+  else {
+   
+    replyDad = '';
+
+  }
+
+  var replyText = replyDad + '@' + name + ' ' + generatedText;
+  
+  T.post('statuses/update', { status: replyText, in_reply_to_status_id: id}, tweeted);
+
+  function tweeted(err, reply) {
+    if (err) {
+      console.log(err.message);
+    } else {
         console.log('Tweeted: ' + reply.text);
-      }
     }
   }
 }
