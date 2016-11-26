@@ -4,7 +4,7 @@
   "description": "Identifies and brings notice to radical midiswaps.",
   "main": "rad-midiswaps.js",
   "scripts": {
-    "start": "node rad-midiswaps.js"
+    "start": "node rad-midiswaps.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
